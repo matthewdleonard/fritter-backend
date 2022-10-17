@@ -340,5 +340,42 @@ This renders the `index.html` file that will be used to interact with the backen
 **Throws**
 
 - `403` if the user is not logged in
-- `400` If the freet content is empty or a stream of empty spaces
+- `400` If the message content is empty or a stream of empty spaces
 - `404` If the recipient does not exist
+
+
+#### `POST /api/store` - Create a new store item
+
+**Body**
+
+- `name` _{string}_ - The store item's name
+- `type` _{string}_ - The store item's type (e.g. 'hat', 'shirt', 'water_bottle')
+- `design` _{string}_ - A data representation of the image design
+
+**Returns**
+
+- A success message
+- An object with the created store item's data
+
+**Throws**
+
+- `403` if the user is not logged in
+
+
+#### `GET /api/store` - Get all store items
+
+**Returns**
+
+- An array of all store items
+
+
+#### `GET /api/store?creator=USERNAME` - Get store items by creator
+
+**Returns**
+
+- An array of store items created by user with username `creator`
+
+**Throws**
+
+- `400` if `creator` is not given
+- `404` if `creator` is not a recognized username of any user
