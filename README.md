@@ -313,3 +313,32 @@ This renders the `index.html` file that will be used to interact with the backen
 **Throws**
 
 - `403` if the user is not logged in
+
+
+#### `GET /api/messages` - Get all the messages for the logged in user
+
+**Returns**
+
+- An array of all messages sent to the user sorted in descending order by date sent
+
+**Throws**
+
+- `403` if user is not logged in
+
+#### `POST /api/messages` - Create a new message
+
+**Body**
+
+- `content` _{string}_ - The content of the message
+- `recipient` _{string}_ - The recipient's username
+
+**Returns**
+
+- A success message
+- A object with the created message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `400` If the freet content is empty or a stream of empty spaces
+- `404` If the recipient does not exist
