@@ -19,8 +19,15 @@ class MessageCollection {
    * @param {string} content - The id of the content of the message
    * @return {Promise<HydratedDocument<Message>>} - The newly created message
    */
-  static async addOne(authorId: Types.ObjectId | string, recipientId: Types.ObjectId | string, content: string): Promise<HydratedDocument<Message>> {
+  static async addOne(authorId: Types.ObjectId | string, recipientName: string, content: string): Promise<HydratedDocument<Message>> {
     const date = new Date();
+    
+    const user = await UserCollection.findOneByUsername(recipientName);
+    if (!user) {
+      return;
+    }
+    const recipientId = user?._id.toString();
+
     const message = new MessageModel({
       authorId,
       recipientId,
