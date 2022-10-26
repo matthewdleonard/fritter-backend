@@ -1,14 +1,13 @@
 import type {Request, Response, NextFunction} from 'express';
 import {Types} from 'mongoose';
-import StoreItemCollection from '../store/collection';
 import LockCollection from './collection';
 
 /**
- * Checks if a freet with freetId is req.params exists
+ * Checks if a freet with lockId is req.params exists
  */
 const isLockExists = async (req: Request, res: Response, next: NextFunction) => {
   const validFormat = Types.ObjectId.isValid(req.params.lockId);
-  const lock = validFormat ? await StoreItemCollection.findOne(req.params.lockId) : '';
+  const lock = validFormat ? await LockCollection.findOne(req.params.lockId) : '';
   if (!lock) {
     res.status(404).json({
       error: {
