@@ -7,8 +7,8 @@ type LockResponse = {
   _id: string;
   author: string;
   type: string;
-  browseTimeLeft: Number;
-  activityTimeLeft: Number;
+  browseTimeLeft: string;
+  activityTimeLeft: string;
   dateModified: string;
 };
 

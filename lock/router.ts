@@ -86,17 +86,17 @@ router.post(
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in or is not the author of
  *                 the store item
- * @throws {404} - If the storeItemId is not valid
+ * @throws {404} - If the lockId is not valid
  */
 router.delete(
-  '/:storeItemId?',
+  '/:lockId?',
   [
     userValidator.isUserLoggedIn,
+    lockValidator.isLockExists,
     lockValidator.isValidLockModifier,
-    lockValidator.isLockExists
   ],
   async (req: Request, res: Response) => {
-    await StoreItemCollection.deleteOne(req.params.storeItemId);
+    await StoreItemCollection.deleteOne(req.params.lockId);
     res.status(200).json({
       message: 'Your lock was deleted successfully.'
     });
@@ -115,14 +115,15 @@ router.delete(
  * @throws {404} - If the storeItem is not valid
  */
 router.put(
-  '/:storeItemId?',
+  '/:lockId?',
   [
     userValidator.isUserLoggedIn,
+    lockValidator.isLockExists,
+    lockValidator.isValidLockContent,
     lockValidator.isValidLockModifier,
-    lockValidator.isLockExists
   ],
   async (req: Request, res: Response) => {
-    const storeItem = await StoreItemCollection.updateOne(req.params.storeItemId, req.body.content, req.body.type);
+    const storeItem = await StoreItemCollection.updateOne(req.params.lockId, req.body.browseTimeLeft, req.body.activityTimeLeft);
     res.status(200).json({
       message: 'Your lock was updated successfully.',
       storeItem: util.constructLockResponse(storeItem)

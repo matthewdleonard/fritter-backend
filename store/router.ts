@@ -91,6 +91,7 @@ router.delete(
   '/:storeItemId?',
   [
     userValidator.isUserLoggedIn,
+    storeItemValidator.isStoreItemExists,
     storeItemValidator.isValidStoreItemModifier
   ],
   async (req: Request, res: Response) => {
@@ -116,6 +117,7 @@ router.put(
   '/:storeItemId?',
   [
     userValidator.isUserLoggedIn,
+    storeItemValidator.isStoreItemExists,
     storeItemValidator.isValidStoreItemModifier
   ],
   async (req: Request, res: Response) => {

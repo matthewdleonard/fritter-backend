@@ -12,8 +12,8 @@ export type Lock = {
   _id: Types.ObjectId; // MongoDB assigns each object this ID on creation
   authorId: Types.ObjectId;
   type: string;
-  browseTimeLeft: Number;
-  activityTimeLeft: Number;
+  browseTimeLeft: string;
+  activityTimeLeft: string;
   dateModified: Date;
 };
 
@@ -21,8 +21,8 @@ export type PopulatedLock = {
   _id: Types.ObjectId; // MongoDB assigns each object this ID on creation
   authorId: User;
   type: string;
-  browseTimeLeft: Number;
-  activityTimeLeft: Number;
+  browseTimeLeft: string;
+  activityTimeLeft: string;
   dateModified: Date;
 };
 
@@ -44,11 +44,11 @@ const LockSchema = new Schema<Lock>({
   },
 
   browseTimeLeft: {
-    type: Number,
+    type: String,
     required: true
   },
   activityTimeLeft: {
-    type: Number,
+    type: String,
     required: true
   },
   // The date the freet was modified

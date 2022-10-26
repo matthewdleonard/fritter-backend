@@ -71,7 +71,7 @@ class LockCollection {
    * @param {string} type - The new type
    * @return {Promise<HydratedDocument<Lock>>} - The newly updated freet
    */
-  static async updateOne(lockId: Types.ObjectId | string, browseTimeLeft: Number, activityTimeLeft: Number): Promise<HydratedDocument<Lock>> {
+  static async updateOne(lockId: Types.ObjectId | string, browseTimeLeft: string, activityTimeLeft: string): Promise<HydratedDocument<Lock>> {
     const lock = await LockModel.findOne({_id: lockId});
     lock.dateModified = new Date();
     lock.browseTimeLeft = browseTimeLeft;
