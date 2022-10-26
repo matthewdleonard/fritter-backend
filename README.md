@@ -348,9 +348,8 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Body**
 
-- `name` _{string}_ - The store item's name
 - `type` _{string}_ - The store item's type (e.g. 'hat', 'shirt', 'water_bottle')
-- `design` _{string}_ - A data representation of the image design
+- `content` _{string}_ - A url to an image that represents the item's design
 
 **Returns**
 
@@ -369,13 +368,112 @@ This renders the `index.html` file that will be used to interact with the backen
 - An array of all store items
 
 
-#### `GET /api/store?creator=USERNAME` - Get store items by creator
+#### `GET /api/store?author=USERNAME` - Get store items by author
 
 **Returns**
 
-- An array of store items created by user with username `creator`
+- An array of store items created by user with username `author`
 
 **Throws**
 
-- `400` if `creator` is not given
-- `404` if `creator` is not a recognized username of any user
+- `400` if `author` is not given
+- `404` if `author` is not a recognized username of any user
+
+
+#### `PUT /api/store/:storeItemId?` - Update an existing store item
+
+**Body**
+
+- `content` _{string}_ - The new content of the store item
+- `type` _{string}_ - The new type of the store item
+
+**Returns**
+
+- A success message
+- An object with the updated store item
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the storeItemId is invalid
+- `403` if the user is not the author of the store item
+- `400` if the new freet content is empty or a stream of empty spaces
+
+#### `DELETE /api/store/:storeItemId?` - Delete an existing store item
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `403` if the user is not the author of the store item
+- `404` if the storeItemId is invalid
+
+
+#### `POST /api/lock` - Create a new lock
+
+**Body**
+
+- `type` _{string}_ - The lock's type (e.g. 'practiceLock' based on logging instrument practice time, 'stepLock' for lockout based on pedometer step count)
+
+**Returns**
+
+- A success message
+- An object with the created store item's data
+
+**Throws**
+
+- `403` if the user is not logged in
+
+
+#### `GET /api/lock` - Get all locks
+
+**Returns**
+
+- An array of all locks
+
+
+#### `GET /api/lock?author=USERNAME` - Get locks for author
+
+**Returns**
+
+- An array of locks created by user with username `author`
+
+**Throws**
+
+- `400` if `author` is not given
+- `404` if `author` is not a recognized username of any user
+
+
+#### `PUT /api/lock/:lockId?` - Update an existing lock (to take away )
+
+**Body**
+
+- `activityTimeLeft` _{string}_ - The new time left that the user must perform the lockout activity
+- `browseTimeLeft` _{string}_ - The new browsing time left that the user has before being locked out of the app until they perform the activity 
+
+**Returns**
+
+- A success message
+- An object with the updated lock
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the lockId is invalid
+- `403` if the user is not the author of the lock
+
+#### `DELETE /api/lock/:lockId?` - Delete an existing store item
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `403` if the user is not the author of the store item
+- `404` if the storeItemId is invalid
+

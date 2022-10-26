@@ -16,6 +16,7 @@ const router = express.Router();
  * @return {StoreResponse[]} - A list of all the storeItems sorted in descending
  *                      order by date modified
  */
+
 /**
  * Get store items by author.
  *
