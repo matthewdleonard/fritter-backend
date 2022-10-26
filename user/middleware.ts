@@ -101,6 +101,32 @@ const isUsernameNotAlreadyInUse = async (req: Request, res: Response, next: Next
   });
 };
 
+const doesRecipientExist = async (req: Request, res: Response, next: NextFunction) => {
+  const user = await UserCollection.findOneByUsername(req.body.recipient);
+
+  // If the current session user wants to change their username to one which matches
+  // the current one irrespective of the case, we should allow them to do so
+  if (!user) {
+    res.status(404).json({
+      error: {
+        username: 'No user with this username exists.'
+      }
+    });
+    return;
+  }
+
+  if (user?._id.toString() === req.session.userId) {
+    res.status(403).json({
+      error: {
+        username: 'You cannot send yourself a message.'
+      }
+    });
+    return;
+  }
+  next();
+  return;
+};
+
 /**
  * Checks if the user is logged in, that is, whether the userId is set in session
  */
@@ -161,5 +187,6 @@ export {
   isAccountExists,
   isAuthorExists,
   isValidUsername,
-  isValidPassword
+  isValidPassword,
+  doesRecipientExist
 };

@@ -8,6 +8,8 @@
   <script src="/scripts/freet.js"></script>
   <script src="/scripts/user.js"></script>
   <script src="/scripts/message.js"></script>
+  <script src="/scripts/store.js"></script>
+  <script src="/scripts/lock.js"></script>
   <script src="/scripts/index.js"></script>
 </head>
 
@@ -135,6 +137,108 @@
           </div>
           <input type="submit" value="Create Message">
         </form>
+        
+        
+        <form id="view-all-store-items">
+            <h3>View All Store Items</h3>
+            <input type="submit" value="View All Store Items">
+          </form>
+        
+        
+        <form id="view-all-store-items-by-author">
+          <h3>View All Store Items By Author</h3>
+          <div>
+            <label for="author">Author:</label>
+            <input id="author" name="author">
+          </div>
+          <input type="submit" value="View Store Items By Author">
+        </form>
+        
+        <form id="create-store-item">
+          <h3>Create Store Item</h3>
+          <div>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content"></textarea>
+            <label for="type">Type:</label>
+            <textarea id="type" name="type"></textarea>
+          </div>
+          <input type="submit" value="Create Message">
+        </form>
+        
+        <form id="edit-store-item">
+          <h3>Edit Store Item</h3>
+          <div>
+            <label for="id">ID:</label>
+            <input id="id" name="id">
+          </div>
+          <div>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content"></textarea>
+            <label for="type">Type:</label>
+            <textarea id="type" name="type"></textarea>
+          </div>
+          <input type="submit" value="Edit Store Item">
+        </form>
+
+        <form id="delete-store-item">
+          <h3>Delete Store Item</h3>
+          <div>
+            <label for="id">ID:</label>
+            <input id="id" name="id">
+          </div>
+          <input type="submit" value="Delete Store Item">
+        </form>
+        
+        <form id="create-lock">
+          <h3>Create Lock</h3>
+          <div>
+              <label for="type">Type:</label>
+              <textarea id="type" name="type"></textarea>
+          </div>
+          <input type="submit" value="Create Lock">
+        </form>
+        
+        <form id="view-all-locks">
+          <h3>View All Locks</h3>
+          <div>
+          </div>
+          <input type="submit" value="View All Locks">
+        </form>
+        
+        <form id="view-locks-by-author">
+          <h3>View All Locks By Author</h3>
+          <div>
+              <label for="author">Author:</label>
+              <input id="author" name="author">
+          </div>
+          <input type="submit" value="View All Locks By Author">
+        </form>
+        
+        <form id="edit-lock">
+          <h3>Edit Locks</h3>
+          <div>
+            <label for="id">ID:</label>
+            <input id="id" name="id">
+          </div>
+          <div>
+              
+              <label for="browseTimeLeft">browseTimeLeft:</label>
+              <textarea id="browseTimeLeft" name="browseTimeLeft"></textarea>
+              <label for="activityTimeLeft">activityTimeLeft:</label>
+              <textarea id="activityTimeLeft" name="activityTimeLeft"></textarea>
+          </div>
+          <input type="submit" value="Edit Locks">
+        </form>
+        
+        <form id="delete-lock">
+          <h3>Delete Lock</h3>
+          <div>
+            <label for="id">ID:</label>
+            <input id="id" name="id">
+          </div>
+          <input type="submit" value="Delete Lock">
+        </form>
+        
       </div>
     </section>
     <section>

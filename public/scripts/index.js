@@ -39,8 +39,18 @@ const formsAndHandlers = {
   'create-freet': createFreet,
   'edit-freet': editFreet,
   'delete-freet': deleteFreet,
-'view-all-messages': viewAllMessages,
+  'view-all-messages': viewAllMessages,
   'create-message': createMessage,
+  'view-all-store-items': viewAllStoreItems,
+  'view-all-store-items-by-author': viewAllStoreItemsByAuthor,
+  'create-store-item': createStoreItem,
+  'edit-store-item': editStoreItem,
+  'delete-store-item': deleteStoreItem,
+  'create-lock': createLock,
+    'view-all-locks': viewAllLocks,
+    'view-locks-by-author': viewLocksByAuthor,
+    'edit-lock': editLock,
+    'delete-lock': deleteLock,
 };
 
 // Attach handlers to forms
